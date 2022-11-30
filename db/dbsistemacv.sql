@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 24, 2022 at 10:48 PM
+-- Generation Time: Nov 30, 2022 at 02:57 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.13
 
@@ -45,11 +45,11 @@ CREATE TABLE `articulo` (
 --
 
 INSERT INTO `articulo` (`idarticulo`, `idcategoria`, `codigo`, `nombre`, `stock`, `descripcion`, `presentacion`, `fecha_vencimiento`, `imagen`, `condicion`) VALUES
-(6, 21, 'tre6', 'ACIDO TRANEXÁMICO ', 107, '', '2mL', '2022-07-24', '1658631245.jpg', 1),
-(7, 16, '12343', 'ADENOSINA ', 23, '3mg/mL', '5mL ', '2022-07-24', '1658631568.jpg', 1),
-(8, 18, '54353', 'AGUA PARA INYECCIÓN ', 12, '', '5mL ', '2022-07-24', '1658631656.jpg', 1),
-(9, 16, '936173648', 'ALTEPLASA', 65, 'SOmg', '', '2022-07-24', '1658631692.png', 1),
-(10, 19, '4324', 'AMFOTERICINA B (COMO DEOXICOLATO SÓDICO)', 23, '50mg', '5mL ', '2022-07-24', '1658631725.jpg', 1);
+(6, 21, 'tre6', 'ACIDO TRANEXÁMICO ', 132, '', '2mL', '2022-07-24', '1658631245.jpg', 1),
+(7, 16, '12343', 'ADENOSINA ', 17, '3mg/mL', '5mL ', '2022-07-24', '1658631568.jpg', 1),
+(8, 18, '54353', 'AGUA PARA INYECCIÓN ', -2, '', '5mL ', '2022-07-24', '1658631656.jpg', 1),
+(9, 16, '936173648', 'ALTEPLASA', 61, 'SOmg', '', '2022-07-24', '1658631692.png', 1),
+(10, 19, '4324', 'AMFOTERICINA B (COMO DEOXICOLATO SÓDICO)', 11, '50mg', '5mL ', '2022-07-24', '1658631725.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -101,7 +101,8 @@ INSERT INTO `detalle_ingreso` (`iddetalle_ingreso`, `idingreso`, `idarticulo`, `
 (12, 8, 6, 59, '67.00', '80.00'),
 (13, 8, 9, 1, '34.00', '87.00'),
 (14, 9, 9, 10, '15.00', '78.00'),
-(15, 9, 7, 11, '15.00', '143.00');
+(15, 9, 7, 11, '15.00', '143.00'),
+(16, 10, 6, 30, '32.00', '40.00');
 
 --
 -- Triggers `detalle_ingreso`
@@ -134,7 +135,14 @@ CREATE TABLE `detalle_venta` (
 --
 
 INSERT INTO `detalle_venta` (`iddetalle_venta`, `idventa`, `idarticulo`, `cantidad`, `precio_venta`, `descuento`) VALUES
-(6, 5, 6, 2, '80.00', '0.00');
+(6, 5, 6, 2, '80.00', '0.00'),
+(7, 6, 6, 5, '80.00', '0.00'),
+(8, 7, 7, 2, '143.00', '0.00'),
+(9, 8, 7, 4, '143.00', '0.00'),
+(10, 9, 8, 4, '54.00', '0.00'),
+(11, 10, 9, 4, '78.00', '0.00'),
+(12, 11, 10, 12, '50.00', '0.00'),
+(13, 11, 8, 10, '21.00', '0.00');
 
 --
 -- Triggers `detalle_venta`
@@ -176,7 +184,8 @@ CREATE TABLE `ingreso` (
 
 INSERT INTO `ingreso` (`idingreso`, `idproveedor`, `idusuario`, `tipo_comprobante`, `serie_comprobante`, `num_comprobante`, `fecha_hora`, `impuesto`, `total_compra`, `estado`) VALUES
 (8, 11, 1, 'Boleta', '98', '3', '2022-07-23 00:00:00', '0.00', '4017.10', 'Aceptado'),
-(9, 9, 1, 'Boleta', '34', '5', '2022-07-23 00:00:00', '0.00', '315.00', 'Aceptado');
+(9, 9, 1, 'Boleta', '34', '5', '2022-07-23 00:00:00', '0.00', '315.00', 'Aceptado'),
+(10, 11, 1, 'Ticket', '12', '4', '2022-11-29 00:00:00', '0.00', '960.00', 'Aceptado');
 
 -- --------------------------------------------------------
 
@@ -200,7 +209,8 @@ INSERT INTO `permiso` (`idpermiso`, `nombre`) VALUES
 (4, 'Ventas'),
 (5, 'Acceso'),
 (6, 'Consulta Compras'),
-(7, 'Consulta Ventas');
+(7, 'Consulta Ventas'),
+(8, 'Dashboard');
 
 -- --------------------------------------------------------
 
@@ -228,7 +238,13 @@ INSERT INTO `persona` (`idpersona`, `tipo_persona`, `nombre`, `tipo_documento`, 
 (9, 'Proveedor', ' ALCON PHARMACEUTICAL PERU', 'RUC', '', 'Las Begonias 441 piso 3 San Isidro', '2215708', ''),
 (10, 'Proveedor', 'B. BRAUN MEDICAL PERÚ S.A.', 'RUC', '', 'Av. Separadora Industrial No. 887 Urb. Miguel Grau Ate', '326-1825', 'bbraunperu@bbraun.com'),
 (11, 'Proveedor', 'BAYER S.A.', 'RUC', '', 'Av. Paseo de la República No. 3074, Piso 10 San Isidro', '211-3800', 'tatiana.urrea@bayer.com'),
-(12, 'Cliente', 'Publico General', 'DNI', '74575695', 'Las Begonias 441 piso 3 San Isidro', '936173648', 'iscojara14@gmail.com');
+(12, 'Cliente', 'Publico General', 'DNI', '74575695', 'Las Begonias 441 piso 3 San Isidro', '936173648', 'iscojara14@gmail.com'),
+(13, 'Cliente', 'Federico Alvarez', 'DNI', '74562693', 'Enrique Segoviano', '936174648', 'fico@gmail.com'),
+(14, 'Cliente', 'David Taipe', 'DNI', '99999999', 'Av. República de Panamá 3591 piso 7 San isidro – Lima 27', '219-3300', 'tatiana.urrea@bayer.com'),
+(15, 'Cliente', 'Lucky S.A.C.', 'RUC', '20304269759', 'Jr. Gnral Manuel de Mendiburu Nro. 1230 Int. 102', '219-3300', 'lucky@gmail.com'),
+(16, 'Cliente', 'Leonel Messi', 'CEDULA', '99999999999', 'Rosario, Argentina', '2215708', 'leo_la_pulga@hotmail.com'),
+(17, 'Cliente', 'Marco Angulo', 'DNI', '56568769', 'Unicachi, Villa el Salvador', '972 266 759', 'marco@untels.edu.pe'),
+(18, 'Cliente', 'Sergio Sanchez', 'DNI', '24162693', 'Ovalo Chama, Villa el Salvador', '935 275 325', 'ssanchez@lucky.com.pe');
 
 -- --------------------------------------------------------
 
@@ -281,7 +297,8 @@ INSERT INTO `usuario_permiso` (`idusuario_permiso`, `idusuario`, `idpermiso`) VA
 (56, 1, 4),
 (57, 1, 5),
 (58, 1, 6),
-(59, 1, 7);
+(59, 1, 7),
+(60, 1, 8);
 
 -- --------------------------------------------------------
 
@@ -307,7 +324,13 @@ CREATE TABLE `venta` (
 --
 
 INSERT INTO `venta` (`idventa`, `idcliente`, `idusuario`, `tipo_comprobante`, `serie_comprobante`, `num_comprobante`, `fecha_hora`, `impuesto`, `total_venta`, `estado`) VALUES
-(5, 12, 1, 'Ticket', '98', '3', '2022-07-23 00:00:00', '0.00', '160.00', 'Aceptado');
+(5, 12, 1, 'Ticket', '98', '3', '2022-07-23 00:00:00', '0.00', '160.00', 'Aceptado'),
+(6, 12, 1, 'Ticket', '98', '5', '2022-11-28 00:00:00', '0.00', '400.00', 'Aceptado'),
+(7, 12, 1, 'Ticket', '23', '23', '2022-11-28 00:00:00', '0.00', '286.00', 'Aceptado'),
+(8, 12, 1, 'Ticket', '98', '4', '2022-11-28 00:00:00', '0.00', '572.00', 'Aceptado'),
+(9, 12, 1, 'Ticket', '98', '34', '2022-11-28 00:00:00', '0.00', '216.00', 'Aceptado'),
+(10, 15, 1, 'Ticket', '12', '1', '2022-11-29 00:00:00', '0.00', '312.00', 'Aceptado'),
+(11, 17, 1, 'Factura', '12', '3', '2022-11-29 00:00:00', '18.00', '810.00', 'Aceptado');
 
 --
 -- Indexes for dumped tables
@@ -407,31 +430,31 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT for table `detalle_ingreso`
 --
 ALTER TABLE `detalle_ingreso`
-  MODIFY `iddetalle_ingreso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `iddetalle_ingreso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `detalle_venta`
 --
 ALTER TABLE `detalle_venta`
-  MODIFY `iddetalle_venta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `iddetalle_venta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `ingreso`
 --
 ALTER TABLE `ingreso`
-  MODIFY `idingreso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `idingreso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `permiso`
 --
 ALTER TABLE `permiso`
-  MODIFY `idpermiso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idpermiso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `persona`
 --
 ALTER TABLE `persona`
-  MODIFY `idpersona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `idpersona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `usuario`
@@ -443,13 +466,13 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT for table `usuario_permiso`
 --
 ALTER TABLE `usuario_permiso`
-  MODIFY `idusuario_permiso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `idusuario_permiso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT for table `venta`
 --
 ALTER TABLE `venta`
-  MODIFY `idventa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idventa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables
