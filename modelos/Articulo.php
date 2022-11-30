@@ -49,7 +49,17 @@ class Articulo
 		return ejecutarConsulta($sql);
 	}
 	public function listarActivosVenta(){
-		$sql = "SELECT a.idarticulo,a.idcategoria,c.nombre as categoria,a.codigo,a.nombre,a.stock,(SELECT precio_venta FROM detalle_ingreso WHERE idarticulo=a.idarticulo order by iddetalle_ingreso desc limit 0,1) as precio_venta,a.descripcion,a.imagen,a.condicion FROM articulo a INNER JOIN categoria c ON a.idcategoria=c.idcategoria WHERE a.condicion='1'";
+		$sql = "SELECT a.idarticulo,a.idcategoria,c.nombre as categoria,a.codigo,a.nombre,
+		a.stock,(SELECT precio_venta FROM detalle_ingreso WHERE idarticulo=a.idarticulo order by iddetalle_ingreso desc limit 0,1) as precio_venta,
+		a.descripcion,a.imagen,a.condicion FROM articulo a INNER JOIN categoria c ON a.idcategoria=c.idcategoria WHERE a.condicion='1'";
+		return ejecutarConsulta($sql);
+	}
+	public function listarProductosVendidos(){
+		$sql = "SELECT art.codigo,art.nombre,art.presentacion,cat.nombre as categoria,SUM(dv.cantidad) as total FROM articulo as art INNER join categoria as cat on art.idcategoria=cat.idcategoria inner JOIN detalle_venta as dv on dv.idarticulo=art.idarticulo GROUP BY art.idarticulo ORDER BY total desc;";
+		return ejecutarConsulta($sql);
+	}
+	public function listarClientesCompras(){
+		$sql = "SELECT p.nombre,p.telefono,p.email, count(v.idcliente) as cantidad_compras FROM venta as v INNER JOIN persona as p on v.idcliente=p.idpersona GROUP BY idcliente ORDER by idcliente asc;";
 		return ejecutarConsulta($sql);
 	}
 

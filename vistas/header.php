@@ -37,7 +37,7 @@ if(strlen(session_id()) < 1)
       <header class="main-header">
 
         <!-- Logo -->
-        <a href="index2.html" class="logo">
+        <a href="#" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini"><b></b>Farmacias</span>
           <!-- logo for regular state and mobile devices -->
@@ -99,6 +99,16 @@ if(strlen(session_id()) < 1)
               echo '<li>
               <a href="escritorio.php">
                 <i class="fa fa-tasks"></i> <span>Escritorio</span>
+              </a>
+            </li>';
+            }
+            ?>
+            <?php 
+            if($_SESSION['dashboard']==1)
+            {
+              echo '<li>
+              <a href="dashboard.php">
+                <i class="fa fa-pie-chart"></i> <span>Dashboard</span>
               </a>
             </li>';
             }

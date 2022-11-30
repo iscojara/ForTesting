@@ -34,6 +34,20 @@ class Consultas
 		$sql = "SELECT DATE_FORMAT(fecha_hora,'%M') as fecha,SUM(total_venta) as total FROM venta GROUP BY MONTH(fecha_hora) ORDER BY fecha_hora DESC limit 0,12";
 		return ejecutarConsulta($sql);
 	}
+	public function grafico_circular(){
+		$sql = "SELECT art.nombre,SUM(dv.cantidad) as total FROM articulo as art INNER join categoria as cat on art.idcategoria=cat.idcategoria inner JOIN detalle_venta as dv on dv.idarticulo=art.idarticulo GROUP BY art.idarticulo ORDER BY total desc LIMIT 5;";
+		return ejecutarConsulta($sql);
+	}
+	public function circular_clientes(){
+		$sql = "SELECT p.nombre,
+		count(v.idcliente) as cantidad_compras
+		 FROM venta as v
+		INNER JOIN persona as p
+		on v.idcliente=p.idpersona 
+		GROUP BY idcliente
+		ORDER by idcliente asc LIMIT 5;";
+		return ejecutarConsulta($sql);
+	}
 
 }
 ?>
