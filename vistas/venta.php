@@ -55,7 +55,7 @@ if ($_SESSION['ventas']==1)
                           </tfoot>
                         </table>
                     </div>
-                    <div class="panel-body" style="height: 400px;" id="formularioregistros">
+                    <div class="panel-body" style="height: auto;" id="formularioregistros">
                         <form name="formulario" id="formulario" method="POST">
                           <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
                             <label>Cliente(*):</label>
@@ -136,7 +136,7 @@ if ($_SESSION['ventas']==1)
 
   <!-- Modal -->
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
-    <div class="modal-dialog" style="width: 65% !important;">
+    <div class="modal-dialog" >
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -148,7 +148,6 @@ if ($_SESSION['ventas']==1)
                 <th>Opciones</th>
                 <th>Nombre</th>
                 <th>Categoría</th>
-                <th>Código</th>
                 <th>Stock</th>
                 <th>Precio Venta</th>
                 <th>Imagen</th>
@@ -160,7 +159,6 @@ if ($_SESSION['ventas']==1)
               <th>Opciones</th>
                 <th>Nombre</th>
                 <th>Categoría</th>
-                <th>Código</th>
                 <th>Stock</th>
                 <th>Precio Venta</th>
                 <th>Imagen</th>

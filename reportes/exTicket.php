@@ -17,6 +17,7 @@ if ($_SESSION['ventas']==1)
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <link href="../public/css/ticket.css" rel="stylesheet" type="text/css">
+<link rel="shortcut icon" href="../public/img/favicon.ico">
 </head>
 <body onload="window.print();">
 <?php
@@ -31,11 +32,11 @@ $rspta = $venta->ventacabecera($_GET["id"]);
 $reg = $rspta->fetch_object();
 
 //Establecemos los datos de la empresa
-$empresa = "Soluciones Innovadoras Perú S.A.C.";
+$empresa = "Lucky S.A.C.";
 $documento = "20477157772";
-$direccion = "Chongoyape, José Gálvez 1368";
+$direccion = "Miraflores, General Mendiburu cuadra 12";
 $telefono = "931742904";
-$email = "jcarlos.ad7@gmail.com";
+$email = "team_arqui@lucky.com.pe";
 
 ?>
 <div class="zona_impresion">
@@ -106,10 +107,10 @@ $email = "jcarlos.ad7@gmail.com";
       <td colspan="3" align="center">¡Gracias por su compra!</td>
     </tr>
     <tr>
-      <td colspan="3" align="center">IncanatoIT</td>
+      <td colspan="3" align="center">Team Arqui</td>
     </tr>
     <tr>
-      <td colspan="3" align="center">Chiclayo - Perú</td>
+      <td colspan="3" align="center">Lima - Perú</td>
     </tr>
     
 </table>

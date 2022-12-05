@@ -217,15 +217,32 @@ function marcarImpuesto()
         $("#impuesto").val("0"); 
     }
   }
+var articulos_agregados = [];
+function verificarProducto(idarticulo) {
+  var indice = articulos_agregados.indexOf(idarticulo);
+
+  if (indice !== -1) {
+    return 1;
+  }
+  articulos_agregados.push(idarticulo);
+  return 0;
+}
 
 function agregarDetalle(idarticulo,articulo,precio_venta)
   {
-  	var cantidad=1;
-    var descuento=0;
+	var cantidad=1;
+	var descuento=0;
 
-    if (idarticulo!="")
+    if (idarticulo=="")
     {
-    	var subtotal=cantidad*precio_venta;
+		alert("Error al ingresar el detalle, revisar los datos del artículo");    	
+    }
+    if( verificarProducto(idarticulo) != 0)
+    {
+		bootbox.alert("Producto ya agregado");
+    }
+	else{
+		var subtotal=cantidad*precio_venta;
     	var fila='<tr class="filas" id="fila'+cont+'">'+
     	'<td><button type="button" class="btn btn-danger" onclick="eliminarDetalle('+cont+')">X</button></td>'+
     	'<td><input type="hidden" name="idarticulo[]" value="'+idarticulo+'">'+articulo+'</td>'+
@@ -239,11 +256,7 @@ function agregarDetalle(idarticulo,articulo,precio_venta)
     	detalles=detalles+1;
     	$('#detalles').append(fila);
     	modificarSubototales();
-    }
-    else
-    {
-    	alert("Error al ingresar el detalle, revisar los datos del artículo");
-    }
+	}
   }
 
   function modificarSubototales()
