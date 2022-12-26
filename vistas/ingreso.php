@@ -36,7 +36,7 @@ if($_SESSION['compras']==1)
                             <th>Usuario</th>
                             <th>Documento</th>
                             <th>Numero</th>
-                            <th>Total Compra</th>
+                            <th>Total de Compra</th>
                             <th>Estado</th>
                           </thead>
                           <tbody>                            
