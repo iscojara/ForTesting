@@ -70,7 +70,7 @@ if (!isset($_SESSION['nombre'])) {
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                         <div class="box box-primary">
                                             <div class="box-header with-border">
-                                                Tabla de Prodctos más vendidos
+                                                Tabla de Productos más vendidos
                                             </div>
                                             <div class="panel-body table-responsive" id="listadoregistros">
                                                 <table id="tblistado" class="table table-striped table-bordered table-condensed table-hover">
